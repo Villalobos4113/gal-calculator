@@ -1,0 +1,15 @@
+Goal: I need to create a calculator code in Wincupl (pld file format) for a GAL22V10 that is able to do addition and subtraction for 4 bits operations between an A [3...0] and a B[3...0], both A and B are binary representations of decimal numbers. The code should be for a GAL22V10 on the software WinCupl.  The calculator also needs to do multiplication for the first three bits in A and B, A[2...0] and B[2...0].
+
+The operation type should be able to be selected by a 2 bits input, O[1...0] for O=00 and O=11 addition, O=01 subtraction and O=10 multiplication.
+
+The code should use standard WinCupl operations: NOR, AND, OR, XOR.
+
+Return Format: I need the code for WinCupl considering a GAL22V10 that has comments for each important variable or function. The code should be programmed in a simple way even for people to understand which means no obscure wincupl functions or external dependencies, only basic operations but still work correctly.
+
+Be careful to make sure that the code correctly sums 4 bits and subtracts 4 bits, the WinCupl code uses standard WinCupl operations of NOR, AND, OR, XOR  when the subtraction is a negative number there should be an output to indicate that 1 for negative, 0 for positive.
+
+For context: I am doing a Logic Circuits project of a calculator that is able to sum, subtract and multiply, this calculator need to be programmed into a GAL22V10 in WinCupl because im goint to connect a display to show the results and a LED, the LED should turn on when the subtraction is negative and the display should indicate the binary number of the result of the subtraction. Im going to use a dipswitch to select which type of operation I want to do like O[1 : 0], si O= 00, addition, O= 01, el subtraction and  O= 10 three bit multiplication. I am going to use a 7448 decoder to translate signals into my BCD 7 segment display.
+
+Operational Requirements: 
+- Input PINS: A (PIN[2:5]), B (PIN[6:9]), O (PIN[10:11])
+- Output PINS: Output number (PIN[15:22] (least significative bit 22, most significative bit 15)), Negative (PIN[14])
