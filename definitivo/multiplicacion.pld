@@ -1,0 +1,56 @@
+Name      MUL3x3_GAL ;
+Device    g22v10 ;
+
+/****************  PIN ASSIGNMENTS  ****************/
+/* inputs */
+PIN  2 = A0 ;
+PIN  3 = A1 ;
+PIN  4 = A2 ;
+
+PIN  6 = B0 ;
+PIN  7 = B1 ;
+PIN  8 = B2 ;
+
+/* outputs (P0 = LSB) */
+PIN 22 = P0 ;
+PIN 21 = P1 ;
+PIN 20 = P2 ;
+PIN 19 = P3 ;
+PIN 18 = P4 ;
+PIN 17 = P5 ;
+
+/****************  LOGIC  **************************/
+/* partial products */
+PP00 = A0 & B0 ;
+PP01 = A1 & B0 ;
+PP02 = A2 & B0 ;
+
+PP10 = A0 & B1 ;
+PP11 = A1 & B1 ;
+PP12 = A2 & B1 ;
+
+PP20 = A0 & B2 ;
+PP21 = A1 & B2 ;
+PP22 = A2 & B2 ;
+
+/* bit 0 */
+P0 = PP00 ;
+
+/* bit 1 */
+P1  = PP01 $ PP10 ;
+C1  = PP01 & PP10 ;
+
+/* bit 2 */
+T2   = PP02 $ PP11 $ PP20 ;
+C2a  = (PP02 & PP11) # (PP02 & PP20) # (PP11 & PP20) ;
+P2   = T2 $ C1 ;
+C2b  = T2 & C1 ;
+C2   = C2a # C2b ;
+
+/* bit 3 */
+P3  = PP12 $ PP21 $ C2 ;
+C3 = (PP12 & PP21) # (PP12 & C2) # (PP21 & C2) ;
+
+/* bit 4 and bit 5 */
+P4 = PP22 $ C3 ;
+P5 = PP22 & C3 ;
