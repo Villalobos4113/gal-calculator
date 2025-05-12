@@ -6,9 +6,9 @@ PIN   [2..5]  =[A0..3]                         ;
 PIN   [6..9]  =[B0..3]                         ;
 
 /* *************** OUTPUT PINS *********************/
-PIN    [14..17] = [S0..3]                      ;
-PIN    [18..20] = [C0..2]                      ;
-PIN    22 = Cout                               ;
+PIN    [20..23] = [S0..3]                      ;
+PIN    [15..17] = [C0..2]                      ;
+PIN    14 = Cout                               ;
 
 function suma4bits(A,B,Cin,CA){
 CA=Cin&A#Cin&B#A&B;
